@@ -9,7 +9,7 @@
     <meta name="author" content="FatimaEzzahra Belissaoui">
     <title>Copie de WorkSphere - Virtual Workspace</title>
     <link rel="stylesheet" href="index.css">
-    <link href="./dist/output.css" rel="stylesheet" >
+    <link href="./dist/output.css" rel="stylesheet">
     <script src="index.js"></script>
 </head>
 
@@ -45,6 +45,38 @@
             <div class="item-6"></div>
             <div class="item-7"></div>
             <div class="item-8"></div>
+        </section>
+        <section class="modal">
+            <div>
+                <h4>Ajouter un Employé</h4>
+                <form class="formulaire">
+                    <div>
+                        <label for="name">Nom Complet</label>
+                        <input type="text" name="name" id="name" required>
+
+                        <label for="role">Role</label>
+                        <select name="role" id="role" required>
+                            <option value="">Choisir un role</option>
+                            <option value="Receptionniste">Receptionniste</option>
+                            <option value="Technicien">Technicien IT</option>
+                            <option value="Agent">Agent de sécurité</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Nettoyage">Nettoyage</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+
+                        <label for="Photo">Photo</label>
+                        <input type="url" id="Photo" name="Photo">
+                        <img id="photo-form" class="photo-form" alt="photo-form">
+
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email">
+
+                        <label for="tél">Téléphone</label>
+                        <input type="tel" id="tél" name="tél">
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
 </body>
