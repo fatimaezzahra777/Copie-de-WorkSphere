@@ -1,0 +1,103 @@
+body{
+    margin-left: 0%;
+    margin-top: 0%;
+}
+main{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 1em;
+}
+.sidebar{
+    background-color: rgb(208, 189, 145);
+    display: block;
+    height: 100vh; 
+    overflow-y: auto;
+}
+
+.card{
+    background-color: antiquewhite;
+    border-radius: 3em;
+    display: flex;
+    justify-content: space-between;
+}
+.edit{
+    padding: 1% 6%;
+    margin-top: 6%;
+    margin-bottom: 6%;
+    border-radius: 3em;
+    
+}
+.add{
+    display: flex;
+    justify-self: center;
+    padding: 1% 6%;
+    margin-top: 6%;
+    margin-bottom: 6%;
+    margin-right: -6%;
+    border-radius: 3em;
+}
+.img-avatar{
+   width: 22%;
+
+}
+
+button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(235, 219, 200);
+    border: solid  rgb(235, 219, 200);
+}
+.parent{
+    background-image: url("./assets/plan-69159a65c5684763515973.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 98%;
+    display: grid;
+    grid-template-columns: 37% 18% 25% 20% ;
+    grid-template-rows: 32% 35% 33%;
+    gap: 2px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+.item-1{
+    border: 4px black solid;
+    cursor: pointer;
+}
+.item-2{
+    border: 4px black solid;
+    grid-row: span 3 / span 3;
+    cursor: pointer;
+}
+.item-3{
+    border: 4px black solid;
+    cursor: pointer;
+}
+.item-4{
+    border: 4px black solid;
+    cursor: pointer;
+}
+.item-5{
+    border: 4px black solid;
+    grid-row: span 2 / span 2;
+    cursor: pointer; 
+}
+.item-6{
+    
+    border: 4px black solid;
+    grid-column-start: 3;
+    grid-row-start: 3;
+    cursor: pointer;
+}
+.item-7{
+   
+    border: 4px black solid;
+    grid-column-start: 4;
+    grid-row-start: 3;
+    cursor: pointer;
+}
+.item-8{
+    border: 4px black solid;
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 2;
+    cursor: pointer;
+}

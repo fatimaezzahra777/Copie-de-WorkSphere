@@ -570,6 +570,10 @@ video {
   display: grid;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .h-full {
   height: 100%;
 }
@@ -578,12 +582,33 @@ video {
   width: 100%;
 }
 
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
 .gap-2 {
   gap: 0.5rem;
 }
 
-.bg-\[url\(\'\.\/assets\/plan-69159a65c5684763515973\.jpg\'\)\] {
-  background-image: url('./assets/plan-69159a65c5684763515973.jpg');
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.bg-\[\#D0BD91\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(208 189 145 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[url\(\'\.\/assets\/plan\.jpg\'\)\] {
+  background-image: url('./assets/plan.jpg');
+}
+
+.bg-contain {
+  background-size: contain;
 }
 
 .bg-center {
@@ -592,6 +617,10 @@ video {
 
 .bg-no-repeat {
   background-repeat: no-repeat;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .pb-6 {
@@ -608,6 +637,14 @@ video {
 }
 
 @media (min-width: 640px) {
+  .sm\:flex {
+    display: flex;
+  }
+
+  .sm\:h-\[50vh\] {
+    height: 50vh;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -615,9 +652,41 @@ video {
   .sm\:grid-rows-3 {
     grid-template-rows: repeat(3, minmax(0, 1fr));
   }
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:gap-4 {
+    gap: 1rem;
+  }
+
+  .sm\:overflow-x-auto {
+    overflow-x: auto;
+  }
+
+  .sm\:whitespace-nowrap {
+    white-space: nowrap;
+  }
 }
 
 @media (min-width: 1024px) {
+  .lg\:grid-cols-\[\] {
+    grid-template-columns: ;
+  }
+
+  .lg\:grid-cols-\[1fr\] {
+    grid-template-columns: 1fr;
+  }
+
+  .lg\:grid-cols-\[1fr_4\] {
+    grid-template-columns: 1fr 4;
+  }
+
+  .lg\:grid-cols-\[1fr_4fr\] {
+    grid-template-columns: 1fr 4fr;
+  }
+
   .lg\:grid-cols-\[37\%_18\%_25\%_20\%\] {
     grid-template-columns: 37% 18% 25% 20%;
   }
