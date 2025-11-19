@@ -12,6 +12,10 @@ const photo_f = document.getElementById("photo-form");
 
 const formul = document.querySelector(".formulaire");
 
+
+const modal2 = document.querySelector(".modal_2");
+const cardContainer = document.querySelector(".card");
+
 let personnes = [];
 
 function GenrerId(){
@@ -38,7 +42,7 @@ inputP.addEventListener("input", () =>{
 
 btn_exp.addEventListener('click', () =>{
     const template = document.createElement('div');
-
+    
     template.innerHTML = `
                 <div class="exp block border rounded-md p-3 bg-gray-50">
                   <div class="flex justify-between items-start gap-3">
@@ -74,7 +78,6 @@ btn_exp.addEventListener('click', () =>{
 })
 
 
-const cardContainer = document.querySelector(".card");
 
 btn_enr.addEventListener('click', (e) => {
     e.preventDefault()
@@ -101,6 +104,8 @@ btn_enr.addEventListener('click', (e) => {
         exper: exper
     };
 
+    personnes.push(personne);
+
     const card = document.createElement("div");
     card.classList.add("p-1", "m-3", "flex", "items-center");
 
@@ -110,12 +115,55 @@ btn_enr.addEventListener('click', (e) => {
                 <button type="button" class="edit">Edit</button>
     `;
 
+    card.addEventListener("click", () => openModal2(personne));
+
     cardContainer.appendChild(card);
 
-    personnes.push(personne);
-
+    // Reset form
     modal_1.style.display = 'none';
     formul.reset();
     experiences.innerHTML = "";
     photo_f.style.display = "none";
 });
+
+
+function openModal2(personne) {
+    modal2.classList.remove("hidden");
+    modal2.innerHTML = `
+
+        <div class="bg-white w-full max-w-lg rounded-xl shadow-xl p-6 animate-fade-in">
+            
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-semibold">Card Details</h3>
+                <button class="close_modal_2 text-gray-700 text-2xl">&times;</button>
+            </div>
+
+            <div>
+                <img src="${personne.Photo}" class="img-avatar">
+
+                <p><strong>Name:</strong> ${personne.nom}</p>
+                <p><strong>Role:</strong> ${personne.role}</p>
+                <p><strong>Email:</strong> ${personne.email}</p>
+                <p><strong>Phone:</strong> ${personne.tél}</p>
+
+                <div class="mt-4">
+                    <h4 class="font-semibold text-lg">Experiences</h4>
+                    ${personne.exper.length === 0 ? "<p>Aucune expérience</p>" :
+        personne.exper.map(exp => `
+                        <div class="mt-2 border p-2 rounded">
+                            <p><strong>Poste:</strong> ${exp.title}</p>
+                            <p><strong>Début:</strong> ${exp.start}</p>
+                            <p><strong>Fin:</strong> ${exp.end}</p>
+                            <p><strong>Description:</strong> ${exp.desc}</p>
+                        </div>
+                    `).join("")
+    }
+                </div>
+            </div>
+        </div>
+    `;
+
+    modal2.querySelector(".close_modal_2").addEventListener("click", () => {
+        modal2.classList.add("hidden");
+    });
+}

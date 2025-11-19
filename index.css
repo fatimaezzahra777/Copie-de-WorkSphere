@@ -21,6 +21,7 @@ main{
     display: block;
     justify-content: space-between;
     width: 99%;
+    cursor: pointer;
 }
 .edit{
     padding: 1% 5%;
