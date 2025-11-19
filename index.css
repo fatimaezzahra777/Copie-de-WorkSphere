@@ -18,7 +18,7 @@ main{
 .card{
     background-color: rgb(170, 208, 185);
     border-radius: 2em;
-    display: flex;
+    display: block;
     justify-content: space-between;
     width: 99%;
 }

@@ -17,9 +17,7 @@
     <main class="min-h-screen">
         <aside class="sidebar">
             <h1 class="text-center mt-6 pb-6 text-2xl font-semibold">Staff Members</h1>
-            <div class="card m-2">
-                
-            </div>
+            <div class="card"></div>
             <div mb-4 text-center>
                 <button type="submit" class="add  rounded-lg focus:outline-none">Add new</button>
             </div>
@@ -29,11 +27,10 @@
             <div class="item-1">
                 <article class="zone card p-1 rounded-lg shadow-sm border" data-zone-id="conference"
                     aria-labelledby="zone-conference">
-                    <div class="flex">
+                    <div class="flex justify-between items-start">
                         <h3 id="zone-conference" class="font-small">Conference Room</h3>
                         <div class="flex ">
-                            <button class="btn-zone " data-zone="conference"
-                                title="Ajouter">
+                            <button class="btn-zone " data-zone="conference" title="Ajouter">
                                 +
                             </button>
                         </div>
@@ -49,8 +46,7 @@
                     <div class="flex justify-between items-start">
                         <h3 id="zone-servers" class="font-small">Servers Room</h3>
                         <div class="flex gap-2">
-                            <button class="btn-zone" data-zone="servers"
-                                title="Ajouter">
+                            <button class="btn-zone" data-zone="servers" title="Ajouter">
                                 +
                             </button>
                         </div>
@@ -65,8 +61,7 @@
                     <div class="flex justify-between items-start">
                         <h3 id="zone-security" class="font-small">Security Room</h3>
                         <div class="flex gap-2">
-                            <button class="btn-zone" data-zone="security"
-                                title="Ajouter">
+                            <button class="btn-zone" data-zone="security" title="Ajouter">
                                 +
                             </button>
                         </div>
@@ -81,8 +76,7 @@
                     <div class="flex justify-between items-start">
                         <h3 id="zone-reception" class="font-small">Reception</h3>
                         <div class="flex gap-2">
-                            <button class="btn-zone" data-zone="reception"
-                                title="Ajouter">
+                            <button class="btn-zone" data-zone="reception" title="Ajouter">
                                 +
                             </button>
                         </div>
@@ -94,11 +88,10 @@
             <div class="item-6">
                 <article class="zone card bg-white p-1 rounded-lg shadow-sm border" data-zone-id="staff"
                     aria-labelledby="zone-staff">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between items-start">
                         <h3 id="zone-staff" class="font-small">Staff Room</h3>
                         <div class="flex gap-2">
-                            <button class="btn-zone" data-zone="staff"
-                                title="Ajouter">
+                            <button class="btn-zone" data-zone="staff" title="Ajouter">
                                 +
                             </button>
                         </div>
@@ -113,8 +106,7 @@
                     <div class="flex justify-between ">
                         <h3 id="vault" class="font-small">Vault</h3>
                         <div class="flex">
-                            <button class="btn-zone" data-zone=vault"
-                                title="Ajouter">
+                            <button class="btn-zone" data-zone=vault" title="Ajouter">
                                 +
                             </button>
                         </div>
@@ -128,7 +120,7 @@
         <section class="modal">
             <div>
                 <h4>Add new Employe</h4>
-                
+
                 <form class="formulaire">
                     <div>
                         <label for="name">Name</label>
@@ -159,13 +151,34 @@
                         <h4>Expériences</h4>
                         <button id="btn-add_exp" type="button" class="btn-add_exp">Add Expériences</button>
                     </div>
-                    <div class="expériences" id="expériences">        
+                    <div class="expériences" id="expériences">
                     </div>
                     <div>
                         <button type="button" class="btn-annule">Annuler</button>
                         <button type="submit" class="btn-enregistre">Enregistrer</button>
                     </div>
                 </form>
+            </div>
+        </section>
+
+        <section class="modal_2 fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center  items-center z-50">
+            <div class="bg-white w-full max-w-lg rounded-2xl shadow-xl p-6 animate-fade-in">
+                <h3 class="text-xl font-semibold">Card Details</h3>
+                <div>
+                    <p class="font-semibold">${personne.Photo}</p>
+                    <p class="font-semibold">Name : ${personne.nom}</p>
+                    <p class="font-semibold">Role : ${personne.role}</p>
+                    <p class="font-semibold">Email : ${personne.email}</p>
+                    <p class="font-semibold">Phone : ${personne.tél}</p>
+
+                    <div class="mt-4">
+                        <h4 class="font-semibold text-lg mb-1">Experience :</h4>
+                        <p class="font-semibold">Poste : ${personne.exper.title}</p>
+                        <p class="font-semibold">Date Debut : ${personne.exper.starrt}</p>
+                        <p class="font-semibold">Date Fin : ${personne.exper.end}</p>
+                        <p class="font-semibold">Description : ${personne.exper.desc}</p>
+                    </div>
+                </div>
             </div>
         </section>
 

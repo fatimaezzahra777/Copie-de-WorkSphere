@@ -5,11 +5,12 @@ const btn_exp = document.querySelector(".btn-add_exp");
 const experiences = document.querySelector("#expériences");
 
 const btn_annule = document.querySelector(".btn-annule");
-const btn_remove = experiences.querySelector(".btn-remove-exp")
 const btn_enr = document.querySelector(".btn-enregistre");
 
 const inputP = document.getElementById("Photo");
 const photo_f = document.getElementById("photo-form");
+
+const formul = document.querySelector(".formulaire");
 
 let personnes = [];
 
@@ -64,40 +65,57 @@ btn_exp.addEventListener('click', () =>{
                   </div>
                 </div>
               `;
-    experiences.appendChild(template);
+
+    template.querySelector(".btn-remove-exp").addEventListener("click", () => {
+        template.remove();
+    });
+
+     experiences.appendChild(template);
 })
 
-btn_enr.addEventListener('submit', (e)=>{
+
+const cardContainer = document.querySelector(".card");
+
+btn_enr.addEventListener('click', (e) => {
     e.preventDefault()
 
     const id = GenrerId();
 
     const exper = [];
-    experiences.querySelector(".exp").forEach(exp => {
-        exper.push({
-            title: exp.querySelector('input[name="exp-title"]').value,
-            start: exp.querySelector('input[name="exp-start"]').value,
-            end: exp.querySelector('input[name="exp-end"]').value,
-            desc: exp.querySelector('textarea[name="exp-desc"]').value
-        });
+    experiences.querySelectorAll(".exp").forEach(exp => {
+    exper.push({
+        title: exp.querySelector('input[name="exp-title"]').value,
+        start: exp.querySelector('input[name="exp-start"]').value,
+        end: exp.querySelector('input[name="exp-end"]').value,
+        desc: exp.querySelector('textarea[name="exp-desc"]').value
     });
-
+});
 
     const personne = {
         id,
-        nom:document.getElementById("name").value,
-        role:document.getElementById("role").value,
-        photo: document.getElementById("photo").value || "https://via.placeholder.com/150",
-        email:document.getElementById("email").value,
-        tél:document.getElementById("tél").value,
-        exper,
-    }
+        nom: document.getElementById("name").value,
+        role: document.getElementById("role").value,
+        Photo: document.getElementById("Photo").value || "https://via.placeholder.com/150",
+        email: document.getElementById("email").value,
+        tél: document.getElementById("tél").value,
+        exper: exper
+    };
 
-   personnes.push(personne);
-   modal_1.reset();
-   console.log(personne);
-})
+    const card = document.createElement("div");
+    card.classList.add("p-1", "m-3", "flex", "items-center");
 
-btn_enr.addEventListener("click", () =>{
-    
-})
+    card.innerHTML = `
+             <img src="${personne.Photo}" alt="avatar" class="img-avatar">
+                <h5 class="mt-5">${personne.nom}</h5>
+                <button type="button" class="edit">Edit</button>
+    `;
+
+    cardContainer.appendChild(card);
+
+    personnes.push(personne);
+
+    modal_1.style.display = 'none';
+    formul.reset();
+    experiences.innerHTML = "";
+    photo_f.style.display = "none";
+});
