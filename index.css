@@ -157,24 +157,31 @@ main{
 } */
 
 .btn-add_exp {
-    background: blue; 
+    background: red; 
     color: white;
     padding: 0.5em 1.2em;
     border-radius: 3em;
     font-weight: bold;
     margin-top: 0.5em;
-    width: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    
 }
 .btn-annule,
 .btn-enregistre {
     padding: 0.5em 1em;
-    width: 100%;
+    width: 50%;
     border-radius: 3em;
     font-weight: bold;
     color: white;
-    background-color: blue;
+    background-color: red;
     cursor: pointer;
     margin: 0.2em;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
 }
 input,select,textarea{
     border: solid 0.1em black;

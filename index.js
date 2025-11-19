@@ -5,10 +5,13 @@ const btn_exp = document.querySelector(".btn-add_exp");
 const experiences = document.querySelector("#expériences");
 
 const btn_annule = document.querySelector(".btn-annule");
-const btn_remove = document.querySelector(".btn-remove-exp")
+const btn_remove = experiences.querySelector(".btn-remove-exp")
+const btn_enr = document.querySelector(".btn-enregistre");
 
 const inputP = document.getElementById("Photo");
 const photo_f = document.getElementById("photo-form");
+
+let personnes = [];
 
 function GenrerId(){
     return Date.now();
@@ -62,4 +65,39 @@ btn_exp.addEventListener('click', () =>{
                 </div>
               `;
     experiences.appendChild(template);
+})
+
+btn_enr.addEventListener('submit', (e)=>{
+    e.preventDefault()
+
+    const id = GenrerId();
+
+    const exper = [];
+    experiences.querySelector(".exp").forEach(exp => {
+        exper.push({
+            title: exp.querySelector('input[name="exp-title"]').value,
+            start: exp.querySelector('input[name="exp-start"]').value,
+            end: exp.querySelector('input[name="exp-end"]').value,
+            desc: exp.querySelector('textarea[name="exp-desc"]').value
+        });
+    });
+
+
+    const personne = {
+        id,
+        nom:document.getElementById("name").value,
+        role:document.getElementById("role").value,
+        photo: document.getElementById("photo").value || "https://via.placeholder.com/150",
+        email:document.getElementById("email").value,
+        tél:document.getElementById("tél").value,
+        exper,
+    }
+
+   personnes.push(personne);
+   modal_1.reset();
+   console.log(personne);
+})
+
+btn_enr.addEventListener("click", () =>{
+    
 })

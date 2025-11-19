@@ -18,12 +18,10 @@
         <aside class="sidebar">
             <h1 class="text-center mt-6 pb-6 text-2xl font-semibold">Staff Members</h1>
             <div class="card m-2">
-                <img src="https://avatar.iran.liara.run/public/girl" alt="avatar" class="img-avatar">
-                <h5 class="mt-5">Nom x</h5>
-                <button type="button" class="edit">Modifier</button>
+                
             </div>
             <div mb-4 text-center>
-                <button type="submit" class="add px-4 py-2 rounded-lg focus:outline-none">Ajouter nouveau</button>
+                <button type="submit" class="add  rounded-lg focus:outline-none">Add new</button>
             </div>
         </aside>
         <section class="parent">
@@ -31,10 +29,10 @@
             <div class="item-1">
                 <article class="zone card p-1 rounded-lg shadow-sm border" data-zone-id="conference"
                     aria-labelledby="zone-conference">
-                    <div class="flex justify-between ">
-                        <h3 id="zone-conference" class="font-semibold">Salle de conférence</h3>
-                        <div class="flex gap-2">
-                            <button class="btn-add-to-zone px-2 py-1 rounded-md border" data-zone="conference"
+                    <div class="flex">
+                        <h3 id="zone-conference" class="font-small">Conference Room</h3>
+                        <div class="flex ">
+                            <button class="btn-zone " data-zone="conference"
                                 title="Ajouter">
                                 +
                             </button>
@@ -46,12 +44,12 @@
             </div>
             <div class="item-2"></div>
             <div class="item-3">
-                <article class="zone card p-1 rounded-lg shadow-sm border" data-zone-id="conference"
-                    aria-labelledby="zone-conference">
+                <article class="zone card p-1 rounded-lg shadow-sm border" data-zone-id="servers"
+                    aria-labelledby="zone-servers">
                     <div class="flex justify-between items-start">
-                        <h3 id="zone-conference" class="font-semibold">Salle d'archives</h3>
+                        <h3 id="zone-servers" class="font-small">Servers Room</h3>
                         <div class="flex gap-2">
-                            <button class="btn-add-to-zone px-2 py-1 rounded-md border" data-zone="conference"
+                            <button class="btn-zone" data-zone="servers"
                                 title="Ajouter">
                                 +
                             </button>
@@ -62,12 +60,12 @@
                 </article>
             </div>
             <div class="item-4">
-                <article class="zone card p-1 rounded-lg shadow-sm border" data-zone-id="conference"
-                    aria-labelledby="zone-conference">
+                <article class="zone card p-1 rounded-lg shadow-sm border" data-zone-id="security"
+                    aria-labelledby="zone-security">
                     <div class="flex justify-between items-start">
-                        <h3 id="zone-conference" class="font-semibold">Salle de sécurite</h3>
+                        <h3 id="zone-security" class="font-small">Security Room</h3>
                         <div class="flex gap-2">
-                            <button class="btn-add-to-zone px-2 py-1 rounded-md border" data-zone="conference"
+                            <button class="btn-zone" data-zone="security"
                                 title="Ajouter">
                                 +
                             </button>
@@ -78,12 +76,12 @@
                 </article>
             </div>
             <div class="item-5">
-                <article class="zone card p-1 rounded-lg shadow-sm border" data-zone-id="Réception"
-                    aria-labelledby="zone-conference">
+                <article class="zone card p-1 rounded-lg shadow-sm border" data-zone-id="reception"
+                    aria-labelledby="zone-reception">
                     <div class="flex justify-between items-start">
-                        <h3 id="zone-conference" class="font-semibold">Réception</h3>
+                        <h3 id="zone-reception" class="font-small">Reception</h3>
                         <div class="flex gap-2">
-                            <button class="btn-add-to-zone px-2 py-1 rounded-md border" data-zone="Réception"
+                            <button class="btn-zone" data-zone="reception"
                                 title="Ajouter">
                                 +
                             </button>
@@ -94,12 +92,12 @@
                 </article>
             </div>
             <div class="item-6">
-                <article class="zone card bg-white p-1 rounded-lg shadow-sm border" data-zone-id="conference"
-                    aria-labelledby="zone-conference">
+                <article class="zone card bg-white p-1 rounded-lg shadow-sm border" data-zone-id="staff"
+                    aria-labelledby="zone-staff">
                     <div class="flex justify-between">
-                        <h3 id="zone-conference" class="font-semibold">Salle de staff</h3>
+                        <h3 id="zone-staff" class="font-small">Staff Room</h3>
                         <div class="flex gap-2">
-                            <button class="btn-add-to-zone rounded-md border" data-zone=""
+                            <button class="btn-zone" data-zone="staff"
                                 title="Ajouter">
                                 +
                             </button>
@@ -110,12 +108,12 @@
                 </article>
             </div>
             <div class="item-7">
-                <article class="zone card bg-white p-1 rounded-lg shadow-sm border" data-zone-id="conference"
-                    aria-labelledby="zone-conference">
+                <article class="zone card bg-white p-1 rounded-lg shadow-sm border" data-zone-id="vault"
+                    aria-labelledby="zone-vault">
                     <div class="flex justify-between ">
-                        <h3 id="Vault" class="font-semibold">Vault</h3>
+                        <h3 id="vault" class="font-small">Vault</h3>
                         <div class="flex">
-                            <button class="btn-add-to-zone rounded-md border" data-zone="conference"
+                            <button class="btn-zone" data-zone=vault"
                                 title="Ajouter">
                                 +
                             </button>
@@ -129,10 +127,11 @@
         </section>
         <section class="modal">
             <div>
-                <h4>Ajouter un Employé</h4>
+                <h4>Add new Employe</h4>
+                
                 <form class="formulaire">
                     <div>
-                        <label for="name">Nom Complet</label>
+                        <label for="name">Name</label>
                         <input type="text" name="name" id="name" required>
 
                         <label for="role">Role</label>
@@ -153,12 +152,12 @@
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email">
 
-                        <label for="tél">Téléphone</label>
+                        <label for="tél">Phone</label>
                         <input type="tel" id="tél" name="tél">
                     </div>
                     <div>
-                        <h4>Les Expériences</h4>
-                        <button id="btn-add_exp" type="button" class="btn-add_exp">Ajouter Expériences</button>
+                        <h4>Expériences</h4>
+                        <button id="btn-add_exp" type="button" class="btn-add_exp">Add Expériences</button>
                     </div>
                     <div class="expériences" id="expériences">        
                     </div>
@@ -167,12 +166,6 @@
                         <button type="submit" class="btn-enregistre">Enregistrer</button>
                     </div>
                 </form>
-            </div>
-        </section>
-        <section class="modal-empl">
-            <div>
-                <h4>Les employé</h4>
-                <img src="" alt="">
             </div>
         </section>
 
