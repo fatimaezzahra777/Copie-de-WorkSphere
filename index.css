@@ -12,7 +12,7 @@ main{
     display: block;
     height: 100vh; 
     overflow-y: auto;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 .card{
@@ -149,12 +149,12 @@ main{
     gap: 2em;
 }
 
-.expériences {
+/* .expériences {
     margin-top: 1em;
     display: flex;
     flex-direction: column;
     gap: 0.5em;
-}
+} */
 
 .btn-add_exp {
     background: blue; 
@@ -176,7 +176,7 @@ main{
     cursor: pointer;
     margin: 0.2em;
 }
-input,select{
+input,select,textarea{
     border: solid 0.1em black;
     width: 100%;
     padding: 2em;
