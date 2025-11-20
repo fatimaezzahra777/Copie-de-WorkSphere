@@ -15,6 +15,18 @@ const formul = document.querySelector(".formulaire");
 
 const modal2 = document.querySelector(".modal_2");
 const cardContainer = document.querySelector(".card");
+const btn_zone = document.querySelectorAll(".btn-zone");
+
+let roleInReceprion = ["Reception", "Manager", "Nettoyage"];
+let roleInServeurs = ["Techniciens IT", "Manager", "Nettoyage"];
+let roleInSecurite = ["Agents de sécurité", "Manager", "Nettoyage"];
+let roleInPersonnel = ["Agents de sécurité", "Manager", "Nettoyage", "Autres rôles", "Techniciens IT", "Receptionnistes"];
+let roleInArchives = ["Manager"];
+let roleInConference = ["Agents de sécurité", "Manager", "Nettoyage", "Autres rôles", "Techniciens IT", "Receptionnistes"];
+    
+const nameR = /^[A-Za-zÀ-ÖØ-ÿ\s'-]{3,30}$/;
+const emailR = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneR = /^(\+?\d{1,3})?[-.\s]?\d{6,14}$/;
 
 let personnes = [];
 
@@ -79,20 +91,49 @@ btn_exp.addEventListener('click', () =>{
 
 
 
-btn_enr.addEventListener('click', (e) => {
+formul.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    const id = GenrerId();
+    const nom = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const tél = document.getElementById("tél").value;
+
+    if(!nameR.test(nom)){
+        alert("Nom invalide");
+        return;
+    }
+
+    if(email && !emailR.test(email)){
+        alert("Email invalide");
+        return;
+    }
+    if(tél && !phoneR.test(tél)){
+        alert("Numero de telephone invalide");
+        return;
+    }
 
     const exper = [];
+    let dateD = true;
+   
     experiences.querySelectorAll(".exp").forEach(exp => {
+    const experS = exp.querySelector('input[name="exp-start"]').value;
+    const experE = exp.querySelector('input[name="exp-end"]').value;
+
+    if(experS !== "" && experE !== "" && experS>experE){
+        alert("La date de début doit être inférieure à la date de fin.")
+        dateD = false;
+        return;
+    }
     exper.push({
         title: exp.querySelector('input[name="exp-title"]').value,
-        start: exp.querySelector('input[name="exp-start"]').value,
-        end: exp.querySelector('input[name="exp-end"]').value,
+        start: experS,
+        end: experE,
         desc: exp.querySelector('textarea[name="exp-desc"]').value
     });
-});
+
+    if(!dateD) return;
+
+    const id = GenrerId();
 
     const personne = {
         id,
@@ -119,11 +160,14 @@ btn_enr.addEventListener('click', (e) => {
 
     cardContainer.appendChild(card);
 
-    // Reset form
     modal_1.style.display = 'none';
     formul.reset();
     experiences.innerHTML = "";
     photo_f.style.display = "none";
+
+
+})
+
 });
 
 

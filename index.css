@@ -34,6 +34,10 @@ main{
     border: solid  green;
     
 }
+.modal_2{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 .add{
     display: flex;
     justify-self: center;
