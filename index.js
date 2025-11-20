@@ -17,18 +17,40 @@ const modal2 = document.querySelector(".modal_2");
 const cardContainer = document.querySelector(".card");
 const btn_zone = document.querySelectorAll(".btn-zone");
 
-let roleInReceprion = ["Reception", "Manager", "Nettoyage"];
-let roleInServeurs = ["Techniciens IT", "Manager", "Nettoyage"];
-let roleInSecurite = ["Agents de sécurité", "Manager", "Nettoyage"];
-let roleInPersonnel = ["Agents de sécurité", "Manager", "Nettoyage", "Autres rôles", "Techniciens IT", "Receptionnistes"];
+const modal_3 = document.querySelector(".modal-3");
+const assignList = document.querySelector(".assign-list");
+const btnCloseAssign = document.querySelector(".close-assign");
+
+
+let roleInReception = ["Receptionniste", "Manager", "Nettoyage"];
+let roleInServeurs = ["Technicien", "Manager", "Nettoyage"];
+let roleInSecurite = ["Agent", "Manager", "Nettoyage"];
+let roleInPersonnel = ["Agent", "Manager", "Nettoyage", "Autres rôles", "Techniciens IT", "Receptionniste"];
 let roleInArchives = ["Manager"];
-let roleInConference = ["Agents de sécurité", "Manager", "Nettoyage", "Autres rôles", "Techniciens IT", "Receptionnistes"];
+let roleInConference = ["Agent", "Manager", "Nettoyage", "Autres rôles", "Techniciens IT", "Receptionniste"];
     
 const nameR = /^[A-Za-zÀ-ÖØ-ÿ\s'-]{3,30}$/;
 const emailR = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneR = /^(\+?\d{1,3})?[-.\s]?\d{6,14}$/;
 
-let personnes = [];
+let personnes = [
+    {
+        id: GenrerId(),
+        nom: "Amal",
+        role: "Receptionniste",
+        Photo: "https://avatar.iran.liara.run/public/girl",
+        email: "amal.aaa@example.com",
+        tél: "+212612345678",
+        exper: [
+            {
+                title: "Assistante d’accueil",
+                start: "2021-01-01",
+                end: "2023-05-01",
+                desc: "Accueil des clients et gestion des appels."
+            }
+        ]
+    }
+];
 
 function GenrerId(){
     return Date.now();
@@ -116,20 +138,18 @@ formul.addEventListener('submit', (e) => {
     let dateD = true;
    
     experiences.querySelectorAll(".exp").forEach(exp => {
-    const experS = exp.querySelector('input[name="exp-start"]').value;
-    const experE = exp.querySelector('input[name="exp-end"]').value;
+        const title = exp.querySelector('input[name="exp-title"]').value;
+        const start = exp.querySelector('input[name="exp-start"]').value;
+        const end = exp.querySelector('input[name="exp-end"]').value;
+        const desc = exp.querySelector('textarea[name="exp-desc"]').value;
 
-    if(experS !== "" && experE !== "" && experS>experE){
+    if(start !== "" && end !== "" && start>end){
         alert("La date de début doit être inférieure à la date de fin.")
         dateD = false;
         return;
     }
-    exper.push({
-        title: exp.querySelector('input[name="exp-title"]').value,
-        start: experS,
-        end: experE,
-        desc: exp.querySelector('textarea[name="exp-desc"]').value
-    });
+    exper.push({title, start, end, desc});
+})
 
     if(!dateD) return;
 
@@ -137,15 +157,17 @@ formul.addEventListener('submit', (e) => {
 
     const personne = {
         id,
-        nom: document.getElementById("name").value,
+        nom,
         role: document.getElementById("role").value,
         Photo: document.getElementById("Photo").value || "https://via.placeholder.com/150",
-        email: document.getElementById("email").value,
-        tél: document.getElementById("tél").value,
+        email,
+        tél,
         exper: exper
     };
 
     personnes.push(personne);
+
+    personnes.forEach(personne => {
 
     const card = document.createElement("div");
     card.classList.add("p-1", "m-3", "flex", "items-center");
@@ -164,18 +186,19 @@ formul.addEventListener('submit', (e) => {
     formul.reset();
     experiences.innerHTML = "";
     photo_f.style.display = "none";
+    })
 
 
 })
 
-});
+
 
 
 function openModal2(personne) {
     modal2.classList.remove("hidden");
     modal2.innerHTML = `
 
-        <div class="bg-white w-full max-w-lg rounded-xl shadow-xl p-6 animate-fade-in">
+        <div class="bg-white rounded-xl shadow-xl p-6 animate-fade-in">
             
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-2xl font-semibold">Card Details</h3>
@@ -211,3 +234,110 @@ function openModal2(personne) {
         modal2.classList.add("hidden");
     });
 }
+
+function openModal(zoneId) {
+    modal_3.classList.remove("hidden");
+    assignList.innerHTML = "";
+
+    personnes.forEach(p => {
+        const item = document.createElement("div");
+        item.classList.add("flex", "items-center", "gap-3", "p-2", "border", "rounded", "cursor-pointer");
+
+        item.innerHTML = `
+            <img src="${p.Photo}" class="w-10 h-10 rounded-full">
+            <div>
+                <p class="font-semibold">${p.nom}</p>
+                <p class="text-sm text-gray-600">${p.role}</p>
+            </div>
+        `;
+
+        item.addEventListener("click", () => {
+            assignPersonToZone(p, zoneId);
+            modal_3.classList.add("hidden");
+        });
+
+        assignList.appendChild(item);
+    });
+}
+
+btn_zone.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const zoneId = btn.dataset.zone;
+        openModal(zoneId);
+    });
+});
+
+btnCloseAssign.addEventListener("click", () => {
+    modal_3.classList.add("hidden");
+});
+
+
+function assignPersonToZone(personne, zoneId) {
+    const zone = document.querySelector(`[data-zone-id="${zoneId}"]`);
+    const occupants = zone.querySelector(".zone-occupants");
+
+    let roleL = [];
+    switch(zoneId){
+        case "reception": roleL = roleInReception; 
+        break;
+        case "servers": roleL = roleInServeurs; 
+        break;
+        case "security": roleL = roleInSecurite; 
+        break;
+        case "staff": roleL = roleInPersonnel; 
+        break;
+        case "vault": roleL = roleInArchives; 
+        break;
+        case "conference": roleL = roleInConference; 
+        break;
+        default: roleL = []
+    }
+
+    if(!roleL.includes(personne.role)){
+        alert("Cette role n'est pas autorise dans cette zone");
+        return;
+    }
+
+    const countZ = occupants.children.length;
+
+    if(countZ>=3){
+        alert("cette salle est deja pleine.");
+        return;
+    }
+
+    const card = document.createElement("div");
+    card.classList.add("flex", "items-center", "gap-3", "p-2", "border", "rounded", "cursor-pointer");
+
+    card.innerHTML = `
+        <img src="${personne.Photo}" class="w-10 h-10 rounded-full">
+        <span>${personne.nom}</span>
+        <button class="remove px-2" >X</button>
+    `;
+
+    card.querySelector(".remove").addEventListener("click", (e) => {
+        e.stopPropagation();
+        card.remove();
+        remplaceP(personne);
+    })
+
+    occupants.appendChild(card);
+}
+
+
+function remplaceP(personne){
+     const card = document.createElement("div");
+     card.classList.add("p-1", "m-3", "flex", "items-center", "gap-3", "cursor-pointer");
+
+
+     card.innerHTML = `
+        <img src="${personne.Photo}" alt="avatar" class="img-avatar">
+        <h5 class="mt-5">${personne.nom}</h5>
+    `;
+
+    card.addEventListener("click", () =>{
+        openModal2(personne)
+    });
+
+    cardContainer.appendChild(card)
+}
+
