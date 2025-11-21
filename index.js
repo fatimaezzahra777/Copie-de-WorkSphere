@@ -21,13 +21,16 @@ const modal_3 = document.querySelector(".modal-3");
 const assignList = document.querySelector(".assign-list");
 const btnCloseAssign = document.querySelector(".close-assign");
 
+const ZonesT = ["reception", "servers", "security", "vault"];
+
+
 
 let roleInReception = ["Receptionniste", "Manager", "Nettoyage"];
 let roleInServeurs = ["Technicien", "Manager", "Nettoyage"];
 let roleInSecurite = ["Agent", "Manager", "Nettoyage"];
-let roleInPersonnel = ["Agent", "Manager", "Nettoyage", "Autres rôles", "Techniciens IT", "Receptionniste"];
+let roleInPersonnel = ["Agent", "Manager", "Nettoyage", "Autre", "Technicien", "Receptionniste"];
 let roleInArchives = ["Manager"];
-let roleInConference = ["Agent", "Manager", "Nettoyage", "Autres rôles", "Techniciens IT", "Receptionniste"];
+let roleInConference = ["Agent", "Manager", "Nettoyage", "Autre", "Technicien", "Receptionniste"];
     
 const nameR = /^[A-Za-zÀ-ÖØ-ÿ\s'-]{3,30}$/;
 const emailR = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,6 +55,8 @@ let personnes = [
     }
 ];
 
+ZoneVide();
+
 function GenrerId(){
     return Date.now();
 }
@@ -73,6 +78,30 @@ inputP.addEventListener("input", () =>{
         photo_f.style.display = "none";
     }
 })
+
+function Card(personne){
+    const card = document.createElement("div");
+    card.classList.add( "p-3","m-3","flex", "items-center", "justify-between", "gap-4","border", "border-gray-200",
+                        "rounded-xl","bg-white", "shadow-sm", "hover:shadow-md", "transition-all", "duration-200","hover:bg-gray-50");
+
+    card.innerHTML = `
+            <div class="flex items-center gap-3">
+                <img src="${personne.Photo}" alt="avatar" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                <h5 class="font-semibold text-gray-800">${personne.nom}</h5>
+            </div>
+                <button type="button" class="Supprimer text-red-500 hover:text-red-600 text-xl font-bold">✕</button>
+    `;
+
+    card.addEventListener("click", () => openModal2(personne));
+
+     card.querySelector(".Supprimer").addEventListener("click", (e) => {
+        e.stopPropagation(); 
+        card.remove();
+    });
+
+    cardContainer.appendChild(card);
+}
+personnes.forEach(p=> Card(p));
 
 btn_exp.addEventListener('click', () =>{
     const template = document.createElement('div');
@@ -166,30 +195,13 @@ formul.addEventListener('submit', (e) => {
     };
 
     personnes.push(personne);
-
-    personnes.forEach(personne => {
-
-    const card = document.createElement("div");
-    card.classList.add("p-1", "m-3", "flex", "items-center");
-
-    card.innerHTML = `
-             <img src="${personne.Photo}" alt="avatar" class="img-avatar">
-                <h5 class="mt-5">${personne.nom}</h5>
-                <button type="button" class="edit">Edit</button>
-    `;
-
-    card.addEventListener("click", () => openModal2(personne));
-
-    cardContainer.appendChild(card);
-
+    Card(personne);
     modal_1.style.display = 'none';
     formul.reset();
     experiences.innerHTML = "";
     photo_f.style.display = "none";
     })
 
-
-})
 
 
 
@@ -206,7 +218,7 @@ function openModal2(personne) {
             </div>
 
             <div>
-                <img src="${personne.Photo}" class="img-avatar">
+                <img src="${personne.Photo}" class="w-12 h-12 rounded-full object-cover shadow-sm">
 
                 <p><strong>Name:</strong> ${personne.nom}</p>
                 <p><strong>Role:</strong> ${personne.role}</p>
@@ -241,13 +253,14 @@ function openModal(zoneId) {
 
     personnes.forEach(p => {
         const item = document.createElement("div");
-        item.classList.add("flex", "items-center", "gap-3", "p-2", "border", "rounded", "cursor-pointer");
+        item.classList.add( "flex", "items-center", "gap-3", "p-3", "border", "border-gray-200", "rounded-xl", "cursor-pointer","bg-white",
+                            "shadow-sm", "hover:shadow-md", "transition-all", "duration-200", "hover:bg-gray-50","active:scale-[0.98]");
 
         item.innerHTML = `
-            <img src="${p.Photo}" class="w-10 h-10 rounded-full">
-            <div>
-                <p class="font-semibold">${p.nom}</p>
-                <p class="text-sm text-gray-600">${p.role}</p>
+            <img src="${p.Photo}" class="w-12 h-12 rounded-full object-cover shadow-sm">
+            <div class="flex flex-col">
+                <p class="font-semibold text-gray-800">${p.nom}</p>
+                <p class="text-sm text-gray-500">${p.role}</p>
             </div>
         `;
 
@@ -258,6 +271,7 @@ function openModal(zoneId) {
 
         assignList.appendChild(item);
     });
+
 }
 
 btn_zone.forEach(btn => {
@@ -306,13 +320,30 @@ function assignPersonToZone(personne, zoneId) {
     }
 
     const card = document.createElement("div");
-    card.classList.add("flex", "items-center", "gap-3", "p-2", "border", "rounded", "cursor-pointer");
+    card.classList.add("p-1","m-1","flex", "items-center", "gap-1", "gap-4","border", "border-gray-200",
+                        "rounded-xl","bg-white", "shadow-sm", "hover:shadow-md", "transition-all", "duration-200","hover:bg-gray-50");
 
     card.innerHTML = `
-        <img src="${personne.Photo}" class="w-10 h-10 rounded-full">
-        <span>${personne.nom}</span>
-        <button class="remove px-2" >X</button>
+
+    <div class="flex items-center gap-1 p-[3px] bg-white rounded-xl ">
+            <img src="./imgs/profil.jpg" class="w-5 h-5 rounded-xl">
+            <span class="text-[9px]">${employe.name}</span>
+            <i class="text-[6px] fa-solid fa-x"></i>
+        </div>
+            <div class="flex items-center gap-3">
+                <img src="${personne.Photo}" alt="avatar" class="w-5 h-5 rounded-xl">
+                <h5 class="font-semibold text-gray-800">${personne.nom}</h5>
+            </div>
+                <button type="button" class="remove text-red-500 hover:text-red-600 text-xl font-bold">✕</button>
     `;
+
+    const sidebarCards = cardContainer.querySelectorAll("div");
+    sidebarCards.forEach(c => {
+        const name = c.querySelector("h5")?.textContent;
+        if(name === personne.nom){
+            c.remove();
+        }
+    });
 
     card.querySelector(".remove").addEventListener("click", (e) => {
         e.stopPropagation();
@@ -321,23 +352,25 @@ function assignPersonToZone(personne, zoneId) {
     })
 
     occupants.appendChild(card);
+    ZoneVide();
 }
 
 
 function remplaceP(personne){
-     const card = document.createElement("div");
-     card.classList.add("p-1", "m-3", "flex", "items-center", "gap-3", "cursor-pointer");
+    Card(personne);
+    ZoneVide()
+}
 
+function ZoneVide(){
+    ZonesT.forEach(zoneId => {
+        const zone = document.querySelector(`[data-zone-id="${zoneId}"]`);
+        const occupants = zone.querySelector(".zone-occupants");
 
-     card.innerHTML = `
-        <img src="${personne.Photo}" alt="avatar" class="img-avatar">
-        <h5 class="mt-5">${personne.nom}</h5>
-    `;
-
-    card.addEventListener("click", () =>{
-        openModal2(personne)
-    });
-
-    cardContainer.appendChild(card)
+        if(occupants.children.length === 0){
+            zone.style.backgroundColor = "red";
+        } else {
+            zone.style.backgroundColor = "rgba(255, 255, 255, 0.5)"
+        }
+    })
 }
 

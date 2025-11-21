@@ -8,174 +8,220 @@
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="FatimaEzzahra Belissaoui">
     <title>Copie de WorkSphere - Virtual Workspace</title>
-    <link rel="stylesheet" href="index.css">
     <link href="./dist/output.css" rel="stylesheet">
 
 </head>
 
-<body class="min-h-screen">
-    <main>
-        <aside class="sidebar">
-            <h1 class="text-center mt-6 pb-6 text-2xl font-semibold">Staff Members</h1>
-            <div class="card"></div>
-            <div mb-4 text-center>
-                <button type="submit" class="add  rounded-lg focus:outline-none">Add new</button>
-            </div>
-        </aside>
-        <section class="parent">
+<body class="min-h-screen bg-gray-50 text-gray-800">
+    <main class="min-h-screen">
+        <div class="min-h-screen grid grid-cols-1 md:[grid-template-columns:1fr] lg:[grid-template-columns:1fr]">
+            <div class="grid md:grid-cols-[1fr_4fr] gap-4">
+                <aside class="sidebar p-6 bg-gray-100 h-screen overflow-y-auto">
+                    <h1 class="text-center mt-6 pb-6 text-2xl font-semibold">Staff Members</h1>
+                    <div class="card flex flex-col"></div>
+                    <div mb-4 text-center>
+                        <button type="submit"
+                            class="add inline-flex items-center justify-center py-2 px-6 rounded-full bg-green-600 border border-green-600 text-white font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300">Add
+                            new</button>
+                    </div>
+                </aside>
+                <section
+                    style="background-image: url('/assets/plan-69159a65c5684763515973.jpg'); background-size: cover;"
+                    class="parent relative bg-center bg-no-repeat w-[98%] mx-auto mt-2 mb-2
+                           grid gap-1
+                           grid-cols-1 grid-rows-auto
+                           md:[grid-template-columns:31%_23%_26%_22%] md:[grid-template-rows:34%_31%_33%]
+                           lg:[grid-template-columns:38%_16%_23%_22%] lg:[grid-template-rows:34%_31%_33%]
+                           xl:[grid-template-columns:36%_12%_27%_25%] xl:[grid-template-rows:34%_38%_28%]
+                           ">
 
-            <div class="item-1">
-                <article class="zone" data-zone-id="conference"
-                    aria-labelledby="zone-conference">
-                    <div class="flex justify-between items-start bg-white rounded-lg">
-                        <h3 id="zone-conference" class="font-semibold text-center">Conference Room</h3>
-                        <div class="flex ">
-                            <button class="btn-zone " data-zone="conference" title="Ajouter">
-                                +
-                            </button>
+                    <div class="item-1 cursor-pointer p-2">
+                        <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="conference"
+                            aria-labelledby="zone-conference">
+                            <div class="flex justify-between items-start">
+                                <h3 id="zone-conference" class="font-semibold text-center">Conference Room</h3>
+                                <div class="flex ">
+                                    <button
+                                        class="btn-zone rounded-full w-8 h-8 flex items-center justify-center bg-white shadow"
+                                        data-zone="conference" title="Ajouter">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
+                            </div>
+                        </article>
+                    </div>
+                    <div class="item-2 cursor-pointer p-2 md:row-span-3 md:col-start-2"></div>
+                    <div class="item-3 cursor-pointer p-2">
+                        <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="servers"
+                            aria-labelledby="zone-servers">
+                            <div class="flex justify-between items-start">
+                                <h3 id="zone-servers" class="font-semibold text-center">Servers Room</h3>
+                                <div class="flex gap-2">
+                                    <button
+                                        class="btn-zone rounded-full w-8 h-8 flex items-center justify-center bg-white shadow"
+                                        data-zone="servers" title="Ajouter">+</button>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 zone-occupants space-y-2" aria-live="polite"></div>
+                        </article>
+                    </div>
+                    <div class="item-4 cursor-pointer p-2">
+                        <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="security"
+                            aria-labelledby="zone-security">
+                            <div class="flex justify-between items-start">
+                                <h3 id="zone-security" class="font-semibold text-center">Security Room</h3>
+                                <div class="flex gap-2">
+                                    <button
+                                        class="btn-zone rounded-full w-8 h-8 flex items-center justify-center bg-white shadow"
+                                        data-zone="security" title="Ajouter">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
+                            </div>
+                        </article>
+                    </div>
+                    <div class="item-5 cursor-pointer p-2 md:row-span-2">
+                        <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="reception"
+                            aria-labelledby="zone-reception">
+                            <div class="flex justify-between items-start">
+                                <h3 id="zone-reception" class="font-semibold text-center">Reception</h3>
+                                <div class="flex gap-2">
+                                    <button
+                                        class="btn-zone rounded-full w-8 h-8 flex items-center justify-center bg-white shadow"
+                                        data-zone="reception" title="Ajouter">+</button>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 zone-occupants space-y-2" aria-live="polite"></div>
+                        </article>
+                    </div>
+                    <div class="item-6 cursor-pointer p-2 md:col-start-3 md:row-start-3">
+                        <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="staff"
+                            aria-labelledby="zone-staff">
+                            <div class="flex justify-around items-start">
+                                <h3 id="zone-staff" class="font-semibold text-center">Staff Room</h3>
+                                <div class="flex gap-1">
+                                    <button
+                                        class="btn-zone rounded-full w-8 h-8 flex items-center justify-center bg-white shadow"
+                                        data-zone="staff" title="Ajouter">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
+                            </div>
+                        </article>
+                    </div>
+                    <div class="item-7 cursor-pointer p-2 md:col-start-4 md:row-start-3">
+                        <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="vault"
+                            aria-labelledby="zone-vault">
+                            <div class="flex justify-between items-start">
+                                <h3 id="vault" class="font-semibold text-center">Vault</h3>
+                                <div class="flex gap-1">
+                                    <button
+                                        class="btn-zone rounded-full w-8 h-8 flex items-center justify-center bg-white shadow"
+                                        data-zone="vault" title="Ajouter">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
+                            </div>
+                        </article>
+                    </div>
+                    <div
+                        class="item-8 cursor-pointer p-2 md:col-start-3 md:col-span-2 md:row-start-2">
+                    </div>
+                </section>
+                <section class="modal fixed inset-0 z-50 hidden items-center justify-center bg-gray-700/60">
+                    <div class="bg-white w-11/12 max-w-2xl max-h-[90vh] overflow-auto rounded-xl p-6 shadow-xl">
+                        <h4 class="text-center text-xl font-bold text-slate-700 mb-4">Add new Employe</h4>
+
+                        <form class="formulaire space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="space-y-3">
+                                    <label for="name" class="block text-sm font-semibold text-slate-600">Name</label>
+                                    <input type="text" name="name" id="name"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-300 outline-none"
+                                        required>
+
+                                    <label for="role"
+                                        class="block text-sm font-semibold text-slate-600 mt-3">Role</label>
+                                    <select name="role" id="role"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-300 outline-none"
+                                        required>
+                                        <option value="">Choisir un role</option>
+                                        <option value="Receptionniste">Receptionniste</option>
+                                        <option value="Technicien">Technicien IT</option>
+                                        <option value="Agent">Agent de sécurité</option>
+                                        <option value="Manager">Manager</option>
+                                        <option value="Nettoyage">Nettoyage</option>
+                                        <option value="Autre">Autre</option>
+                                    </select>
+
+                                    <label for="Photo"
+                                        class="block text-sm font-semibold text-slate-600 mt-3">Photo</label>
+                                    <input type="url" id="Photo" name="Photo"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-300 outline-none">
+                                    <img id="photo-form"
+                                        class="photo-form hidden w-20 h-20 rounded-full object-cover mt-2"
+                                        alt="photo-form">
+
+                                    <div class="space-y-3">
+                                        <label for="email"
+                                            class="block text-sm font-semibold text-slate-600">Email</label>
+                                        <input type="email" name="email" id="email"
+                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-300 outline-none">
+
+                                        <label for="tél"
+                                            class="block text-sm font-semibold text-slate-600 mt-3">Phone</label>
+                                        <input type="tel" id="tél" name="tél"
+                                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-300 outline-none">
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-slate-700">Expériences</h4>
+                                        <button id="btn-add_exp" type="button"
+                                            class="btn-add_exp mt-2 inline-flex items-center px-3 py-2 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700">Add
+                                            Expériences</button>
+                                    </div>
+                                </div>
+
+                                <div class="expériences space-y-3" id="expériences">
+                                </div>
+                                <div class="flex gap-4 justify-between"">
+                                <button type="button"
+                                    class="btn-annule w-1/2 inline-flex justify-center py-2 px-4 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700">
+                                    Annuler</button>
+                                    <button type="submit"
+                                        class="btn-enregistre w-1/2 inline-flex justify-center py-2 px-4 rounded-full bg-green-600 text-white font-semibold hover:bg-green-700">Enregistrer</button>
+                                </div>
+                        </form>
+                    </div>
+                </section>
+
+                <section
+                    class="modal_2 fixed inset-0 hidden bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
+
+                </section>
+
+                <section
+                    class="modal-3 hidden flex justify-center items-center fixed  bg-gray-500 inset-0 bg-opacity-70">
+                    <div class="bg-gray-300 flex flex-col gap-3 md:w-[28vw] lg:w-[30vw] h-[40vh] overflow-auto pb-2">
+                        <div class="flex justify-between items-start md:mx-4 lg:mt-2 lg:mb-7">
+                            <h3 class="text-lg font-semibold">Select a Person</h3>
+                            <button class="close-assign text-xl" type="button">&times;</button>
                         </div>
-                    </div>
-                    <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
-                    </div>
-                </article>
-            </div>
-            <div class="item-2"></div>
-            <div class="item-3">
-                <article class="zone" data-zone-id="servers"
-                    aria-labelledby="zone-servers">
-                    <div class="flex justify-between items-start bg-white rounded-lg">
-                        <h3 id="zone-servers" class="font-semibold text-center">Servers Room</h3>
-                        <div class="flex gap-2">
-                            <button class="btn-zone" data-zone="servers" title="Ajouter">
-                                +
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
-                    </div>
-                </article>
-            </div>
-            <div class="item-4">
-                <article class="zone" data-zone-id="security"
-                    aria-labelledby="zone-security">
-                    <div class="flex justify-between items-start bg-white rounded-lg">
-                        <h3 id="zone-security" class="font-semibold text-center">Security Room</h3>
-                        <div class="flex gap-2">
-                            <button class="btn-zone" data-zone="security" title="Ajouter">
-                                +
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
-                    </div>
-                </article>
-            </div>
-            <div class="item-5">
-                <article class="zone" data-zone-id="reception"
-                    aria-labelledby="zone-reception">
-                    <div class="flex justify-between items-start bg-white rounded-lg">
-                        <h3 id="zone-reception" class="font-semibold text-center">Reception</h3>
-                        <div class="flex gap-2">
-                            <button class="btn-zone" data-zone="reception" title="Ajouter">
-                                +
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
-                    </div>
-                </article>
-            </div>
-            <div class="item-6">
-                <article class="zone" data-zone-id="staff"
-                    aria-labelledby="zone-staff">
-                    <div class="flex justify-around items-start bg-white rounded-lg">
-                        <h3 id="zone-staff" class="font-semibold text-center">Staff Room</h3>
-                        <div class="flex gap-1">
-                            <button class="btn-zone" data-zone="staff" title="Ajouter">
-                                +
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
-                    </div>
-                </article>
-            </div>
-            <div class="item-7">
-                <article class="zone" data-zone-id="vault"
-                    aria-labelledby="zone-vault">
-                    <div class="flex justify-between items-start bg-white rounded-lg">
-                        <h3 id="vault" class="font-semibold text-center">Vault</h3>
-                        <div class="flex">
-                            <button class="btn-zone" data-zone="vault" title="Ajouter">
-                                +
-                            </button>
-                        </div>
-                    </div>
-                    <div class="mt-3 zone-occupants space-y-2" aria-live="polite">
-                    </div>
-                </article>
-            </div>
-            <div class="item-8"></div>
-        </section>
-        <section class="modal">
-            <div>
-                <h4>Add new Employe</h4>
 
-                <form class="formulaire">
-                    <div>
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name" required>
-
-                        <label for="role">Role</label>
-                        <select name="role" id="role" required>
-                            <option value="">Choisir un role</option>
-                            <option value="Receptionniste">Receptionniste</option>
-                            <option value="Technicien">Technicien IT</option>
-                            <option value="Agent">Agent de sécurité</option>
-                            <option value="Manager">Manager</option>
-                            <option value="Nettoyage">Nettoyage</option>
-                            <option value="Autre">Autre</option>
-                        </select>
-
-                        <label for="Photo">Photo</label>
-                        <input type="url" id="Photo" name="Photo">
-                        <img id="photo-form" class="photo-form" alt="photo-form">
-
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email">
-
-                        <label for="tél">Phone</label>
-                        <input type="tel" id="tél" name="tél">
+                        <div class="assign-list space-y-2"></div>
                     </div>
-                    <div>
-                        <h4>Expériences</h4>
-                        <button id="btn-add_exp" type="button" class="btn-add_exp">Add Expériences</button>
-                    </div>
-                    <div class="expériences" id="expériences">
-                    </div>
-                    <div>
-                        <button type="button" class="btn-annule">Annuler</button>
-                        <button type="submit" class="btn-enregistre">Enregistrer</button>
-                    </div>
-                </form>
-            </div>
-        </section>
+                </section>
 
-        <section
-            class="modal_2 fixed inset-0 hidden bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
 
-        </section>
-
-        <section class="modal-3 hidden fixed inset-0 bg-black/40 flex items-center justify-center">
-            <div class="bg-white w-full max-w-md rounded-lg shadow-lg p-4">
-                <div class="flex justify-between items-center mb-3">
-                    <h3 class="text-lg font-semibold">Select a Person</h3>
-                    <button class="close-assign text-xl" type="button">&times;</button>
-                </div>
-
-                <div class="assign-list space-y-2"></div>
-            </div>
-        </section>
 
     </main>
 
