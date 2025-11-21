@@ -320,18 +320,12 @@ function assignPersonToZone(personne, zoneId) {
     }
 
     const card = document.createElement("div");
-    card.classList.add("p-1","m-1","flex", "items-center", "gap-1", "gap-4","border", "border-gray-200",
+    card.classList.add("p-1","m-1","flex", "gap-1","border", "border-gray-200",
                         "rounded-xl","bg-white", "shadow-sm", "hover:shadow-md", "transition-all", "duration-200","hover:bg-gray-50");
 
     card.innerHTML = `
-
-    <div class="flex items-center gap-1 p-[3px] bg-white rounded-xl ">
-            <img src="./imgs/profil.jpg" class="w-5 h-5 rounded-xl">
-            <span class="text-[9px]">${employe.name}</span>
-            <i class="text-[6px] fa-solid fa-x"></i>
-        </div>
-            <div class="flex items-center gap-3">
-                <img src="${personne.Photo}" alt="avatar" class="w-5 h-5 rounded-xl">
+            <div class="flex items-center gap-2">
+                <img src="${personne.Photo}" alt="avatar" class="w-12 h-12 rounded-xl">
                 <h5 class="font-semibold text-gray-800">${personne.nom}</h5>
             </div>
                 <button type="button" class="remove text-red-500 hover:text-red-600 text-xl font-bold">✕</button>
