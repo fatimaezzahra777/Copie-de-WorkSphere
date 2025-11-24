@@ -36,6 +36,10 @@ const nameR = /^[A-Za-zÀ-ÖØ-ÿ\s'-]{3,30}$/;
 const emailR = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneR = /^(\+?\d{1,3})?[-.\s]?\d{6,14}$/;
 
+function GenrerId(){
+    return Date.now();
+}
+
 let personnes = [
     {
         id: GenrerId(),
@@ -57,9 +61,6 @@ let personnes = [
 
 ZoneVide();
 
-function GenrerId(){
-    return Date.now();
-}
 
 ajouter.addEventListener("click", () =>{
     modal_1.style.display = 'flex'
@@ -337,8 +338,8 @@ function assignPersonToZone(personne, zoneId) {
     "bg-white", "border", "transition-all", "duration-200",
     "hover:scale-[1.02]");
 
-    card.style.width = "170px";
-    card.style.minHeight = "45px";
+    card.style.width = "100%";
+    card.style.minHeight = "20px";
 
     card.innerHTML = `
             <div class="flex items-center gap-2">
@@ -384,16 +385,3 @@ function ZoneVide(){
     })
 }
 
-function PersonneZone(personne){
-    const zones= document.querySelectorAll(".zone-occupants");
-
-    for (let zone of zones ){
-        const cards = zone.querySelectorAll("div");
-        for (let card of cards){
-            if (Number(card.dataset.id)===personne.id){
-                return true;
-            }
-        }
-    }
-    return false;
-}

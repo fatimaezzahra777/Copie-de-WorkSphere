@@ -542,14 +542,11 @@ object {
 Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
 */
 
-.img-avatar{
-  width: 40px;
-  height: 40px;
-}
+
 
 img,
 video {
-  max-width: 35%;
+  max-width: 30%;
   height: auto;
 }
 
@@ -682,6 +679,10 @@ video {
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-start {
