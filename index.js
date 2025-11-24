@@ -81,12 +81,18 @@ inputP.addEventListener("input", () =>{
 
 function Card(personne){
     const card = document.createElement("div");
-    card.classList.add( "p-3","m-3","flex", "items-center", "justify-between", "gap-4","border", "border-gray-200",
-                        "rounded-xl","bg-white", "shadow-sm", "hover:shadow-md", "transition-all", "duration-200","hover:bg-gray-50");
+    card.dataset.personId = personne.id;
+    card.classList.add(
+    "flex", "items-center", "gap-3", "p-2", "m-1", 
+    "border", "border-gray-200", "rounded-lg", 
+    "bg-white", "shadow-sm", "hover:shadow-md", "transition-all", "duration-200"
+);
+
+
 
     card.innerHTML = `
             <div class="flex items-center gap-3">
-                <img src="${personne.Photo}" alt="avatar" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                <img src="${personne.Photo}" alt="avatar" class="rounded-full object-cover ">
                 <h5 class="font-semibold text-gray-800">${personne.nom}</h5>
             </div>
                 <button type="button" class="Supprimer text-red-500 hover:text-red-600 text-xl font-bold">✕</button>
@@ -252,12 +258,16 @@ function openModal(zoneId) {
     assignList.innerHTML = "";
 
     personnes.forEach(p => {
+
+        if(PersonneZone(p)) return;
         const item = document.createElement("div");
-        item.classList.add( "flex", "items-center", "gap-3", "p-3", "border", "border-gray-200", "rounded-xl", "cursor-pointer","bg-white",
-                            "shadow-sm", "hover:shadow-md", "transition-all", "duration-200", "hover:bg-gray-50","active:scale-[0.98]");
+        item.classList.add( "flex", "items-center", "gap-3", "p-3", "border", "border-gray-200",
+            "rounded-xl", "cursor-pointer", "bg-white", "shadow-sm",
+            "hover:shadow-md", "transition-all", "duration-200", "hover:bg-gray-50",
+            "active:scale-[0.98]");
 
         item.innerHTML = `
-            <img src="${p.Photo}" class="w-12 h-12 rounded-full object-cover shadow-sm">
+            <img src="${p.Photo}" class="img-avatar rounded-full object-cover shadow-sm">
             <div class="flex flex-col">
                 <p class="font-semibold text-gray-800">${p.nom}</p>
                 <p class="text-sm text-gray-500">${p.role}</p>
@@ -287,6 +297,7 @@ btnCloseAssign.addEventListener("click", () => {
 
 
 function assignPersonToZone(personne, zoneId) {
+
     const zone = document.querySelector(`[data-zone-id="${zoneId}"]`);
     const occupants = zone.querySelector(".zone-occupants");
 
@@ -320,21 +331,26 @@ function assignPersonToZone(personne, zoneId) {
     }
 
     const card = document.createElement("div");
-    card.classList.add("p-1","m-1","flex", "gap-1","border", "border-gray-200",
-                        "rounded-xl","bg-white", "shadow-sm", "hover:shadow-md", "transition-all", "duration-200","hover:bg-gray-50");
+    card.dataset.id = personne.id; 
+    card.classList.add("flex", "items-center", "justify-between",
+    "gap-2", "p-3", "rounded-xl", "shadow-md",
+    "bg-white", "border", "transition-all", "duration-200",
+    "hover:scale-[1.02]");
+
+    card.style.width = "170px";
+    card.style.minHeight = "45px";
 
     card.innerHTML = `
             <div class="flex items-center gap-2">
-                <img src="${personne.Photo}" alt="avatar" class="w-12 h-12 rounded-xl">
+                <img src="${personne.Photo}" alt="avatar" class="img-avatar rounded-full object-cover">
                 <h5 class="font-semibold text-gray-800">${personne.nom}</h5>
             </div>
                 <button type="button" class="remove text-red-500 hover:text-red-600 text-xl font-bold">✕</button>
     `;
 
-    const sidebarCards = cardContainer.querySelectorAll("div");
+    const sidebarCards = cardContainer.querySelectorAll("[data-person-id]");
     sidebarCards.forEach(c => {
-        const name = c.querySelector("h5")?.textContent;
-        if(name === personne.nom){
+        if(c.dataset.personId == personne.id){
             c.remove();
         }
     });
@@ -368,3 +384,16 @@ function ZoneVide(){
     })
 }
 
+function PersonneZone(personne){
+    const zones= document.querySelectorAll(".zone-occupants");
+
+    for (let zone of zones ){
+        const cards = zone.querySelectorAll("div");
+        for (let card of cards){
+            if (Number(card.dataset.id)===personne.id){
+                return true;
+            }
+        }
+    }
+    return false;
+}
