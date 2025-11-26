@@ -541,7 +541,6 @@ object {
 /*
 Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
 */
-
 .img-avatar{
   width: 20%;
 }
@@ -599,6 +598,10 @@ video {
   margin-top: 1.5rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .block {
   display: block;
 }
@@ -635,8 +638,33 @@ video {
   height: 100vh;
 }
 
+.h-\[80vh\] {
+  height: 80vh;
+}
+
+.h-80 {
+  height: 20rem;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.h-px {
+  height: 1px;
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .max-h-\[90vh\] {
   max-height: 90vh;
+}
+
+.max-h-full {
+  max-height: 100%;
 }
 
 .min-h-screen {
@@ -741,12 +769,26 @@ video {
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
+.space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
 .overflow-auto {
   overflow: auto;
 }
 
 .overflow-y-auto {
   overflow-y: auto;
+}
+
+.overflow-y-clip {
+  overflow-y: clip;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
 }
 
 .rounded-full {
@@ -1034,16 +1076,16 @@ video {
     grid-template-columns: 1fr 4fr;
   }
 
+  .md\:grid-cols-\[38\%_17\%_22\%_22\%\] {
+    grid-template-columns: 38% 17% 22% 22%;
+  }
+
+  .md\:grid-rows-\[34\%_31\%_33\%\] {
+    grid-template-rows: 34% 31% 33%;
+  }
+
   .md\:\[grid-template-columns\:1fr\] {
     grid-template-columns: 1fr;
-  }
-
-  .md\:\[grid-template-columns\:31\%_23\%_26\%_22\%\] {
-    grid-template-columns: 31% 23% 26% 22%;
-  }
-
-  .md\:\[grid-template-rows\:34\%_31\%_33\%\] {
-    grid-template-rows: 34% 31% 33%;
   }
 }
 
@@ -1060,25 +1102,25 @@ video {
     width: 30vw;
   }
 
+  .lg\:grid-cols-\[38\%_17\%_22\%_22\%\] {
+    grid-template-columns: 38% 17% 22% 22%;
+  }
+
+  .lg\:grid-rows-\[34\%_31\%_33\%\] {
+    grid-template-rows: 34% 31% 33%;
+  }
+
   .lg\:\[grid-template-columns\:1fr\] {
     grid-template-columns: 1fr;
-  }
-
-  .lg\:\[grid-template-columns\:38\%_16\%_23\%_22\%\] {
-    grid-template-columns: 38% 16% 23% 22%;
-  }
-
-  .lg\:\[grid-template-rows\:34\%_31\%_33\%\] {
-    grid-template-rows: 34% 31% 33%;
   }
 }
 
 @media (min-width: 1280px) {
-  .xl\:\[grid-template-columns\:36\%_12\%_27\%_25\%\] {
-    grid-template-columns: 36% 12% 27% 25%;
+  .xl\:grid-cols-\[38\%_17\%_22\%_22\%\] {
+    grid-template-columns: 38% 17% 22% 22%;
   }
 
-  .xl\:\[grid-template-rows\:34\%_38\%_28\%\] {
-    grid-template-rows: 34% 38% 28%;
+  .xl\:grid-rows-\[34\%_31\%_33\%\] {
+    grid-template-rows: 34% 31% 33%;
   }
 }

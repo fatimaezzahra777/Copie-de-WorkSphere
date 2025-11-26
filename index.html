@@ -19,23 +19,22 @@
                 <aside class="sidebar p-6 bg-gray-100 h-screen overflow-y-auto">
                     <h1 class="text-center mt-6 pb-6 text-2xl font-semibold">Staff Members</h1>
                     <div class="card flex flex-col"></div>
-                    <div mb-4 text-center>
+                    <div class="mb-4 text-center">
                         <button type="submit"
                             class="add inline-flex items-center justify-center py-2 px-6 rounded-full bg-green-600 border border-green-600 text-white font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300">Add
                             new</button>
                     </div>
                 </aside>
-                <section
-                    style="background-image: url('./assets/plan-69159a65c5684763515973.jpg'); background-size: cover;"
-                    class="parent relative bg-center bg-no-repeat w-[98%] mx-auto mt-2 mb-2
+                <section style="background-image: url('./assets/plan-69159a65c5684763515973.jpg'); background-size: cover;"
+                         class="parent relative bg-center bg-no-repeat w-[98%] mx-auto mt-2 mb-2
                            grid gap-1
                            grid-cols-1 grid-rows-auto
-                           md:[grid-template-columns:31%_23%_26%_22%] md:[grid-template-rows:34%_31%_33%]
-                           lg:[grid-template-columns:38%_16%_23%_22%] lg:[grid-template-rows:34%_31%_33%]
-                           xl:[grid-template-columns:36%_12%_27%_25%] xl:[grid-template-rows:34%_38%_28%]
+                           md:grid-cols-[38%_17%_22%_22%] md:grid-rows-[34%_31%_33%]
+                           lg:grid-cols-[38%_17%_22%_22%] lg:grid-rows-[34%_31%_33%]
+                           xl:grid-cols-[38%_17%_22%_22%] xl:grid-rows-[34%_31%_33%]
                            ">
 
-                    <div class="item-1 cursor-pointer p-2  overflow-y-auto">
+                    <div class="item-1 cursor-pointer p-2 overflow-y-auto">
                         <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="conference"
                             aria-labelledby="zone-conference">
                             <div class="flex justify-between items-start">
@@ -53,7 +52,7 @@
                         </article>
                     </div>
                     <div class="item-2 cursor-pointer p-2 md:row-span-3 md:col-start-2"></div>
-                    <div class="item-3 cursor-pointer p-2  overflow-y-auto">
+                    <div class="item-3 cursor-pointer p-2 overflow-y-auto">
                         <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="servers"
                             aria-labelledby="zone-servers">
                             <div class="flex justify-between items-start">
@@ -68,7 +67,7 @@
                             <div class="mt-3 zone-occupants space-y-2 overflow-y-auto" aria-live="polite"></div>
                         </article>
                     </div>
-                    <div class="item-4 cursor-pointer p-2  overflow-y-auto">
+                    <div class="item-4 cursor-pointer p-2 overflow-y-auto">
                         <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="security"
                             aria-labelledby="zone-security">
                             <div class="flex justify-between items-start">
@@ -85,7 +84,7 @@
                             </div>
                         </article>
                     </div>
-                    <div class="item-5 cursor-pointer p-2 md:row-span-2  overflow-y-auto">
+                    <div class="item-5 cursor-pointer p-2 md:row-span-2 overflow-y-auto">
                         <article class="zone bg-white/60 rounded-lg p-2" data-zone-id="reception"
                             aria-labelledby="zone-reception">
                             <div class="flex justify-between items-start">
@@ -170,7 +169,7 @@
                                         class="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-blue-300 outline-none">
                                     <img id="photo-form"
                                         class="photo-form hidden w-20 h-20 rounded-full object-cover mt-2"
-                                        alt="photo-form">
+                                        alt="image-form">
 
                                     <div class="space-y-3">
                                         <label for="email"
@@ -193,21 +192,19 @@
 
                                 <div class="expériences space-y-3" id="expériences">
                                 </div>
-                                <div class="flex gap-4 justify-between"">
-                                <button type="button"
-                                    class="btn-annule w-1/2 inline-flex justify-center py-2 px-4 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700">
+                                <div class="flex gap-4 justify-between">
+                                <button type="button" class="btn-annule w-1/2 inline-flex justify-center py-2 px-4 rounded-full bg-red-600 text-white font-semibold hover:bg-red-700">
                                     Annuler</button>
                                     <button type="submit"
                                         class="btn-enregistre w-1/2 inline-flex justify-center py-2 px-4 rounded-full bg-green-600 text-white font-semibold hover:bg-green-700">Enregistrer</button>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </section>
 
                 <section
                     class="modal_2 fixed inset-0 hidden bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
-                    
-
                 </section>
 
                 <section
@@ -221,9 +218,6 @@
                         <div class="assign-list space-y-2"></div>
                     </div>
                 </section>
-
-
-
     </main>
 
     <script src="index.js"></script>

@@ -1,44 +1,66 @@
+//Bouton qui ouvre le modal d'ajout d'une personne
 const ajouter = document.querySelector(".add");
+
+//Le premier modal formulaire d'ajout
 const modal_1 = document.querySelector(".modal");
 
+//Bouton pour ajouter un bloc expérience dans le formulaire
 const btn_exp = document.querySelector(".btn-add_exp");
+
+//Conteneur les blocs d'expérience sont ajoutes
 const experiences = document.querySelector("#expériences");
 
+//Bouton pour fermer le modal
 const btn_annule = document.querySelector(".btn-annule");
-const btn_enr = document.querySelector(".btn-enregistre");
 
+//Input texte contenant l'URL de la photo
 const inputP = document.getElementById("Photo");
+
+//Image de prévisualisation de la photo
 const photo_f = document.getElementById("photo-form");
 
+//Le form d'ajout d'une personne
 const formul = document.querySelector(".formulaire");
 
-
+//Modal pour afficher les détails d'une carte
 const modal2 = document.querySelector(".modal_2");
+
+//Conteneur de les cartes
 const cardContainer = document.querySelector(".card");
+
+//Boutons qui représentent les zones
 const btn_zone = document.querySelectorAll(".btn-zone");
 
+//Modal d'assignation d'une personne a une zone
 const modal_3 = document.querySelector(".modal-3");
+
+//Conteneur des items cliquables dans modal_3
 const assignList = document.querySelector(".assign-list");
+
+//Bouton de fermeture de modal_3
 const btnCloseAssign = document.querySelector(".close-assign");
 
+//Liste des data-zone-id gérées par la fonction ZoneVide()
 const ZonesT = ["reception", "servers", "security", "vault"];
 
-
-
+//Tableaux contenant quels rôles sont autorisés dans chaque zone
 let roleInReception = ["Receptionniste", "Manager", "Nettoyage"];
 let roleInServeurs = ["Technicien", "Manager", "Nettoyage"];
 let roleInSecurite = ["Agent", "Manager", "Nettoyage"];
 let roleInPersonnel = ["Agent", "Manager", "Nettoyage", "Autre", "Technicien", "Receptionniste"];
 let roleInArchives = ["Manager"];
 let roleInConference = ["Agent", "Manager", "Nettoyage", "Autre", "Technicien", "Receptionniste"];
-    
+
+
 const nameR = /^[A-Za-zÀ-ÖØ-ÿ\s'-]{3,30}$/;
 const emailR = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneR = /^(\+?\d{1,3})?[-.\s]?\d{6,14}$/;
 
+//function pour generer un id 
 function GenrerId(){
     return Date.now();
 }
+
 
 let personnes = [
     {
@@ -134,7 +156,7 @@ btn_exp.addEventListener('click', () =>{
                     </div>
 
                     <div class="flex flex-col gap-2">
-                      <button class="btn-remove-exp px-2 py-1 rounded-md bg-red-500 text-white" type="button">Supprimer</button>
+                      <button class="btn-remove-exp px-2 py-1 rounded-md bg-red-600 text-white" type="button">Supprimer</button>
                     </div>
                   </div>
                 </div>
@@ -207,9 +229,7 @@ formul.addEventListener('submit', (e) => {
     formul.reset();
     experiences.innerHTML = "";
     photo_f.style.display = "none";
-    })
-
-
+})
 
 
 
@@ -217,15 +237,15 @@ function openModal2(personne) {
     modal2.classList.remove("hidden");
     modal2.innerHTML = `
 
-        <div class="bg-white rounded-xl shadow-xl p-6 animate-fade-in">
+        <div class="bg-white rounded-xl shadow-xl p-6 animate-fade-in overflow-y-auto h-[80vh]">
             
-            <div class="flex justify-between items-center mb-4">
+            <div class="flex justify-between items-center mt-6">
                 <h3 class="text-2xl font-semibold">Card Details</h3>
                 <button class="close_modal_2 text-gray-700 text-2xl">&times;</button>
             </div>
 
             <div>
-                <img src="${personne.Photo}" class="w-12 h-12 rounded-full object-cover shadow-sm">
+                <img src="${personne.Photo}" class="rounded-full object-cover shadow-sm">
 
                 <p><strong>Name:</strong> ${personne.nom}</p>
                 <p><strong>Role:</strong> ${personne.role}</p>
@@ -385,3 +405,16 @@ function ZoneVide(){
     })
 }
 
+function PersonneZone(personne){
+    const zones= document.querySelectorAll(".zone-occupants");
+
+    for (let zone of zones ){
+        const cards = zone.querySelectorAll("div");
+        for (let card of cards){
+            if (Number(card.dataset.id)===personne.id){
+                return true;
+            }
+        }
+    }
+    return false;
+}
